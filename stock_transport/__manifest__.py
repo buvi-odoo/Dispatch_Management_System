@@ -12,6 +12,7 @@
         'security/ir.model.access.csv',
         'views/fleet_inherit_category_view.xml',
         'views/batch_transfers_inherit_view.xml',
+        'views/stock_picking_inherit_view.xml',
       
      
      ],

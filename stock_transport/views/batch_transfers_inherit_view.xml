@@ -1,26 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
+ 
+
+
+
+        <record id="stock_picking_batch.stock_picking_batch_action" model="ir.actions.act_window">
+            <field name="name">Batch Transfers</field>
+            <field name="res_model">stock.picking.batch</field>
+            <field name="view_mode">tree,kanban,form,graph</field>
+            <field name="domain">[('is_wave', '=', False)]</field>
+            <field name="context">{'search_default_draft': True, 'search_default_in_progress': True}</field>
+
+        </record>
+
+
+        <record id="stock_batch_graph_view_graph" model="ir.ui.view">
+            <field name="name">stock.picking.batch.view.graph</field>
+            <field name="model">stock.picking.batch</field>
+            <field name="arch" type="xml">
+                <graph type="line" sample="1">
+                    <field name="scheduled_date"/>
+                    <field name="fleet_category_id"/>
+                </graph>
+            </field>
+        </record>
+
+
+
+<!-- 
+        <record id="view_stock_picking_batch_gantt_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.batch.gantt.inherit</field>
+            <field name="model">stock.picking.batch</field>
+            <field name="inherit_id" ref="stock.view_stock_picking_batch_gantt"/>
+            <field name="arch" type="xml">
+                <xpath expr="//gantt/tree/ganttcol[@name='date']" position="after">
+                    <ganttcol name="total_weight" string="Total Weight" widget="float_time"/>
+                    <ganttcol name="total_volume" string="Total Volume" widget="float_time"/>
+                </xpath>
+            </field>
+        </record>
+ -->
+
+
+
 
         <record id="batch_transfers_inherit_view_form" model="ir.ui.view">
             <field name="name">batch.tansfers.inherit.view.form</field>
             <field name="model">stock.picking.batch</field>
             <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_form"/>
             <field name="arch" type="xml">
- 
-               
-                 <xpath expr="//field[@name='scheduled_date']" position="after">
-                     <field name="dock_id"/>
-                     <field name="fleet_vehicle_id"/>
-                   <field name="fleet_category_id"/>
-                     
-                    <field name="weight"/>
-                   <field name="volume"/>
-                
+
+
+                <xpath expr="//field[@name='scheduled_date']" position="after">
+                    <field name="dock_id"/>
+                    <field name="fleet_vehicle_id"/>
+                    <field name="fleet_category_id"/>
+
+                    <field name="total_weight" widget='progressbar' />
+                    <field name="total_volume" widget='progressbar'/>
+
                 </xpath>
-                 
+
             </field>
         </record>
-    </data>
+
+
+
+
+
+
+
+
+   
 </odoo>
  

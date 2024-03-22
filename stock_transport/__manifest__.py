@@ -1,7 +1,7 @@
 {
     'name': "Dispatch Management System",
     'version': '1.0',
-    'depends': ['base','fleet','stock_picking_batch'],
+    'depends': ['base','fleet','stock_picking_batch','web_gantt'],
     'author': "Bussa Vishal",
     'category': 'Category',
     'description': """
@@ -20,4 +20,11 @@
       'demo': [
           
       ],
+      'assets': {
+        'web.assets_backend': [
+            'stock_transport/static/src/views/stockTransport/stock_transport_gantt_renderer.xml',
+            'stock_transport/static/src/views/stockTransport/stock_transport_gantt_renderer.js',
+            'stock_transport/static/src/views/stockTransport/stock_transport_gantt_view.js',
+        ]
+    }
 }

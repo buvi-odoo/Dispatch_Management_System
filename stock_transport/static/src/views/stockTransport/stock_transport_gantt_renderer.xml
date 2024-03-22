@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="stock_transport.PlanningGanttRenderer.Pill" t-inherit="web_gantt.GanttRenderer.Pill">
+        <xpath expr="//div//div[hasclass('o_gantt_pill')]" position="inside">
+            <span class="o_gantt_pill_title text-truncate mx-1" t-esc="pill.record.total_weight">
+                </span>
+                <span class="o_gantt_pill_title text-truncate mx-1" t-esc="pill.record.total_volume">
+                </span>
+                <t t-if="pill.record.driver_image">
+                                        <img t-att-src="'data:image/png;base64,' + pill.record.driver_image" class="img-thumbnail" alt="Driver image" width='40px'/>
+                                    </t>
+                
+        </xpath>
+    </t>
+
+</templates>
